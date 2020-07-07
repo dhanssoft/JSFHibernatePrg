@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <h:link outcome="newcontacts" value="New Contact"/>
+        
+        <h:dataTable value="#{c.list}" var="u" cellspacing="7px" border="1" style="border-collapse: collapse">
+        
+        <h:column>
+        <f:facet name="header">Aather ID</f:facet>
+        #{u.aid}
+        </h:column>
+        
+            <h:column>
+        <f:facet name="header">Person Name</f:facet>
+        #{u.pname}
+        </h:column>
+            
+        <h:column>
+        <f:facet name="header">Phone</f:facet>
+        #{u.phone}
+        </h:column>
+            
+        <h:column>
+            <f:facet name="header">Action</f:facet>
+            <h:commandLink value="Delete" action="#{c.delete(u)}" onclick="return confirm('Are you sure?')"/>
+            |<h:commandLink value="Update" action="#{c.edit(u)}" />
+        </h:column>
+            
+        </h:dataTable>
+        </h:form>
+        
+    </h:body>
+</html>
+
